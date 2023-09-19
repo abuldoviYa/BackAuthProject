@@ -5,8 +5,8 @@ import com.abuldovi.backauthproject.dto.CredentialsDTO;
 import com.abuldovi.backauthproject.dto.SignUpDTO;
 import com.abuldovi.backauthproject.dto.UserDTO;
 import com.abuldovi.backauthproject.services.UserService;
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +20,11 @@ public class AuthController {
 
     private final UserService userService;
     private final UserAuthProvider userAuthProvider;
+
+    @PostConstruct
+    public void initRoleAndUser(){
+        userService.initRoleAndUser();
+    }
 
     @PostMapping("/login")
     public ResponseEntity<UserDTO> login(@RequestBody CredentialsDTO credentialsDTO){

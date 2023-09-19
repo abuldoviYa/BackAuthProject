@@ -8,6 +8,7 @@ public class BackAuthProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BackAuthProjectApplication.class, args);
+
     }
 
 }
